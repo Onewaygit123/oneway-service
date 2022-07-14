@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<Properties>
+		<Property name="LOG_ROOT" value="c:/temp/logs" />
+		<Property name="LOG_FILE_NAME" value="oneway-application" />
+	</Properties>
+	<Appenders>
+		<RollingFile name="rollingFile"
+			fileName="${LOG_ROOT}/${LOG_FILE_NAME}.log"
+			filePattern="${LOG_ROOT}/${LOG_FILE_NAME}.%d{dd-MMM}.log.gz"
+			ignoreExceptions="false">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" />
+			</Policies>
+			<DefaultRolloverStrategy max="5" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.service.oneway" level="info"
+			additivity="false">
+			<AppenderRef ref="rollingFile" />
+		</Logger>
+
+		<Root level="info">
+			<AppenderRef ref="rollingFile" />
+		</Root>
+	</Loggers>
+
+</configuration>
