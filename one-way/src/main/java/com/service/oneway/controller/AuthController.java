@@ -36,6 +36,7 @@ import com.service.oneway.services.UserDetailsImpl;
 @RequestMapping("/api/auth")
 public class AuthController {
 	@Autowired
+	
 	AuthenticationManager authenticationManager;
 	@Autowired
 	UserRepository userRepository;
